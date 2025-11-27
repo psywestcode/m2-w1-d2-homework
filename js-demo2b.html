@@ -10,10 +10,62 @@
 <script>
     $(document).ready(function() {
        $("#btn").click(function(event){
+           // Use jQuery to fetch the JSON file
+           $.getJSON("data.json", function(data) {
+               
+               // 1. Construct the Table Caption
+               var tableContent = "<caption>" + data.title + "</caption>";
 
+               // 2. Construct the Table Head (thead)
+               tableContent += "<thead>";
+               tableContent += "<tr id='showheading'>";
+               tableContent += "<th>" + data.heading + "</th>";
+               tableContent += "<th>" + data.head1 + "</th>";
+               tableContent += "<th>" + data.head2 + "</th>";
+               tableContent += "<th>" + data.head3 + "</th>";
+               tableContent += "<th>" + data.head4 + "</th>";
+               tableContent += "</tr>";
+               tableContent += "</thead>";
+
+               // 3. Construct the Table Body (tbody)
+               tableContent += "<tbody>";
+               
+               // Row for Calories
+               tableContent += "<tr id='showcalories'>";
+               tableContent += "<td>" + data.subheadcal + "</td>";
+               tableContent += "<td>" + data.cal1 + "</td>";
+               tableContent += "<td>" + data.cal2 + "</td>";
+               tableContent += "<td>" + data.cal3 + "</td>";
+               tableContent += "<td>" + data.cal4 + "</td>";
+               tableContent += "</tr>";
+
+               // Row for Fat
+               tableContent += "<tr id='showfat'>";
+               tableContent += "<td>" + data.subheadfat + "</td>";
+               tableContent += "<td>" + data.fat1 + "</td>";
+               tableContent += "<td>" + data.fat2 + "</td>";
+               tableContent += "<td>" + data.fat3 + "</td>";
+               tableContent += "<td>" + data.fat4 + "</td>";
+               tableContent += "</tr>";
+               tableContent += "</tbody>";
+
+               // 4. Construct the Table Footer (tfoot)
+               tableContent += "<tfoot>";
+               tableContent += "<tr id='showven'>";
+               tableContent += "<td>" + data.subheadven + "</td>";
+               tableContent += "<td>" + data.ven1 + "</td>";
+               tableContent += "<td>" + data.ven2 + "</td>";
+               tableContent += "<td>" + data.ven3 + "</td>";
+               tableContent += "<td>" + data.ven4 + "</td>";
+               tableContent += "</tr>";
+               tableContent += "</tfoot>";
+
+               // Inject the constructed HTML into the empty table element
+               $("table").html(tableContent);
+           });
        });
     });
- </script>
+</script>
 </head> 	
 <body>
 
